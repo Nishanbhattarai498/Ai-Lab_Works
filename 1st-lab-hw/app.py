@@ -1,10 +1,19 @@
 import streamlit as st
 import joblib
-
+import os
 # Load trained model
-model = joblib.load("model.joblib")
-
 st.title("❤️ Heart Disease Prediction App")
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+MODEL_PATH = os.path.join(BASE_DIR, "model.joblib")
+
+st.write("📁 Looking for model at:", MODEL_PATH)
+
+if not os.path.exists(MODEL_PATH):
+    st.error("❌ model.joblib not found in app directory")
+    st.stop()
+
+model = joblib.load(MODEL_PATH)
 
 age = st.number_input("Age", min_value=1, max_value=120)
 sex = st.number_input("Sex (1 = Male, 0 = Female)")
