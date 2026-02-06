@@ -7,7 +7,6 @@ st.title("❤️ Heart Disease Prediction App")
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 MODEL_PATH = os.path.join(BASE_DIR, "model.joblib")
 
-st.write("📁 Looking for model at:", MODEL_PATH)
 
 if not os.path.exists(MODEL_PATH):
     st.error("❌ model.joblib not found in app directory")
